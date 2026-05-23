@@ -25,7 +25,8 @@ const Analyzer = () => {
       setResult(response.data);
     } catch (err) {
       console.error(err);
-      setError('Failed to analyze URL. Ensure backend is running.');
+      const detail = err.response?.data?.detail;
+      setError(detail || 'Failed to analyze URL. Ensure the backend is running on http://localhost:8000.');
     } finally {
       setLoading(false);
     }
